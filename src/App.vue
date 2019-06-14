@@ -2,13 +2,15 @@
 
 <div id ="app" class= "container">
   <h2> Todo List</h2>
+  <md-card>
+  <md-header>
   <md-field>
   <md-input type ="text" v-model="currentTodo"  class ="todo-input" @keydown.enter="addTodo()" placeholder="Add a todo"></md-input>
   </md-field>
   <ul>
     <li v-for="todo in todos" :key="todo.id" >
       <div class ="todo-item-left">
-        <input class="check" type="checkbox" v-model="todo.completed">
+        <md-checkbox v-model="todo.completed" class="md-primary" </md-checkbox>
           <div v-if= "!todo.editing"  @dblclick="editTodo(todo)" class ="todo-item-label" :class="{completed: todo.completed}">
             {{todo.label }}
           </div>
@@ -17,11 +19,15 @@
       <div class ="close" @click="removeTodo(todo)">&times;</div>
     </li>
   </ul>
+  </md-header>
+  <md-container>
   <div class ="extra-container">
     <div><label><input type="checkbox" :checked="!anyRemaining" @change="checkAllTodos">Check All</label></div>
     <div>{{remaining}} items left </div>
   </div>
   <div><small>Double click to edit a Todo</small></div>
+  </md-container>
+</md-card>
 </div>
 
 </template>
@@ -170,7 +176,7 @@
     color:#2c3e50;
     font-size:24px;
     margin-left:12px;
-    width:100px;
+    width:200px;
     padding:10px;
     border:1px solid ;
     font-family:'Avenir', Arial, Sans-serif;
