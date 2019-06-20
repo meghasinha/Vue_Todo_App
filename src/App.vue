@@ -10,7 +10,7 @@
   <ul>
     <li v-for="todo in todos" :key="todo.id" >
       <div class ="todo-item-left">
-        <md-checkbox v-model="todo.completed" class="md-primary" </md-checkbox>
+        <md-checkbox v-model="todo.completed" class="md-primary"></md-checkbox>
           <div v-if= "!todo.editing"  @dblclick="editTodo(todo)" class ="todo-item-label" :class="{completed: todo.completed}">
             {{todo.label }}
           </div>
@@ -206,5 +206,17 @@
     top: 0;
     padding: 12px 16px 12px 16px;
   }
+
+  .md-checkbox .md-checkbox-container {
+     border-color:rgba(0,0,0, 0.54);
+ }
+
+.md-checkbox.md-checked .md-checkbox-container {
+     background-color: #ff5252;
+ }
+
+.md-checkbox.md-checked .md-checkbox-container:after {
+    border-color: #fff;
+ }
 
 </style>
